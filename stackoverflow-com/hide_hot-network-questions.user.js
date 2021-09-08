@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hide Stack Overflow "Hot Network Questions"
 // @namespace    Stack Overflow
-// @version      0.1
+// @version      0.2
 // @description  Hides the "Hot Network Questions" panel on stackoverflow.com
 // @author       Aaron Holmes
 // @match        *://*stackoverflow.com*/*
