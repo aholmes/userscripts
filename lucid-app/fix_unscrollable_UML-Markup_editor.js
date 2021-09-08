@@ -12,15 +12,19 @@
 (function() {
     'use strict';
 
-    function addGlobalStyle(css) {
+    let style;
+    (function createGlobalStyle() {
         let parent = document.head;
         if (!parent) { parent = document.body; }
         if (!parent) { parent = document.getElementsByTagName('html')[0]; }
 
-        let style = document.createElement('style');
+        style = document.createElement('style');
         style.type = 'text/css';
-        style.innerHTML = css;
         parent.appendChild(style);
+    })();
+
+    function addGlobalStyle(css) {
+        style.innerHTML += css;
     }
 
     // Textarea expansion solution from here https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
@@ -43,7 +47,6 @@
         min-height: 100%;
         grid-area: 1 / 1 / 2 / 2;
     }`;
-
 
     addGlobalStyle(textareaContainerRule);
     addGlobalStyle(textareaContainerAfterRule);

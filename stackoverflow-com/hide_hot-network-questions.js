@@ -13,15 +13,19 @@
 (function() {
     'use strict';
 
-    function addGlobalStyle(css) {
+    let style;
+    (function createGlobalStyle() {
         let parent = document.head;
         if (!parent) { parent = document.body; }
         if (!parent) { parent = document.getElementsByTagName('html')[0]; }
 
-        let style = document.createElement('style');
+        style = document.createElement('style');
         style.type = 'text/css';
-        style.innerHTML = css;
         parent.appendChild(style);
+    })();
+
+    function addGlobalStyle(css) {
+        style.innerHTML += css;
     }
 
     addGlobalStyle('#hot-network-questions { display: none; }')
